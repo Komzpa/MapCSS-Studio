@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+		<link rel="stylesheet" type="text/css" href="jquery.notify.css" />
+		<script src='jquery-1.3.2.min.js'></script>
+		<script src='jquery.notify.js'></script>
+		<script>
+			$(function(){
+				$('#test-simple').click(function(){
+					$.notify({
+						title: 'The title',
+						message: 'simple example message!'
+					});
+				});
+			
+				$('#test-icon').click(function(){
+					$.notify({
+						title: 'The title',
+						message: 'simple example message!',
+						icon: 'http://aux.iconpedia.net/uploads/2060894592371679265.png'
+					});
+				});
+				
+				$('#test-timer').click(function(){
+					$.notify({
+						title: 'The title',
+						message: 'simple example message!',
+						timeout: 2000
+					});
+				});
+				
+				$('#test-callback').click(function(){
+					var id = $.notify({
+						title: 'The title',
+						message: 'simple example message!',
+						obj: { m: 'this is a custom object' },
+						onClose: function(cId, obj){ alert('closed, id = ' + cId + ", obj: " + obj.m); },
+						onClick: function(cId, obj){ alert('click, id = ' + cId + ", obj: " + obj.m); },
+						closeOnClick: false
+					});
+					alert("ID = " + id);
+				});
+				
+				$('#test-fallback').click(function(){
+					$.notify({
+						title: 'The title',
+						message: 'simple example message!',
+						useFallback: true
+					});
+				});
+				
+				$('#test-url').click(function(){
+					$.notify({
+						url: 'readme.txt',
+						closeOnClick: false
+					});
+				});
+			});
+		</script>
+		<title>Notify test page</title>
+	</head>
+	<body>
+		<button id='test-simple'>Simple</button>
+		<button id='test-icon'>With icon</button>
+		<button id='test-timer'>Timed</button>
+		<button id='test-callback'>Raising callbacks</button>
+		<button id='test-fallback'>Backwards compatible version</button>
+		<button id='test-url'>Show URL</button>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
